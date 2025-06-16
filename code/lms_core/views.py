@@ -5,7 +5,7 @@ from django.core import serializers
 from django.contrib.auth.models import User
 
 def index(request):
-    return HttpResponse("<h1>Hello World</h1>")
+    return HttpResponse("<h1>hello</h1>")
     
 def testing(request):
     dataCourse = Course.objects.all()
