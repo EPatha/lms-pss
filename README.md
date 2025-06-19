@@ -1,5 +1,5 @@
-# UAS Pemrograman Sisi Server
-## Project LMS API Laravel w/ Docker
+# UAS Capstone Pemrograman Sisi Server
+## Project LMS API Laravel
 
 ## Fitur
 - Register, Login, & Logout - Point 1
