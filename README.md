@@ -1,5 +1,14 @@
-## Backend Simple LMS
+# UAS Pemrograman Sisi Server
+## Project LMS API Laravel w/ Docker
 
-Merupakan proyek backend untuk aplikasi LMS sederhana yang dibuat untuk tujuan studi kasus pembelajaran backend developement menggunakan Django dan Django Ninja.
+## Fitur
+- Register, Login, & Logout - Point 1
+- Course Analytic - Point 1
+- Limitation Maximum Student Enroll - Point 1
+- Announcement - Point 4
+- Feedback - Point 4
+- Category - Point 4
 
-tugas jumat
+# Developer
+- Ephesians Prismaranatha
+  A11.2022.14632

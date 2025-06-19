@@ -1,18 +1,27 @@
-FROM python:3.11
+FROM php:8.4-fpm
 
-# Set working directory
-WORKDIR /code
+RUN apt-get update && apt-get install -y \
+    zip \
+    unzip \
+    git \
+    curl \
+    libpng-dev \
+    libjpeg-dev \
+    libfreetype6-dev \
+    libicu-dev \
+    libzip-dev \
+    lsb-release \
+    ca-certificates \
+    gnupg \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-configure zip \
+    && docker-php-ext-install gd pdo pdo_mysql intl zip
 
-# Copy requirements and install dependencies
-COPY code/requirements.txt /code/
-RUN pip install --upgrade pip
-RUN pip install -r requirements.txt
+RUN curl -sL https://deb.nodesource.com/setup_18.x | bash - \
+    && apt-get install -y nodejs
 
-# Copy the rest of the application code
-COPY code/ /code/
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Expose port 8000 (optional, for documentation)
-EXPOSE 8000
+WORKDIR /var/www/html
 
-# Default command (can be overridden by docker-compose)
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+RUN npm install -g npm
