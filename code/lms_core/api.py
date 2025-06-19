@@ -4,7 +4,7 @@ from lms_core.schema import CourseSchemaOut, CourseMemberOut, CourseSchemaIn
 from lms_core.schema import CourseContentMini, CourseContentFull
 from lms_core.schema import CourseCommentOut, CourseCommentIn
 from lms_core.models import Course, CourseMember, CourseContent, Comment
-from ninja_simple_jwt.auth.views.api import mobile_auth_router
+from django_ninja_simple_jwt.auth.views.api import mobile_auth_router
 from ninja_simple_jwt.auth.ninja_auth import HttpJwtAuth
 from ninja.pagination import paginate, PageNumberPagination
 
@@ -16,8 +16,20 @@ apiv1 = NinjaAPI()
 apiv1.add_router("/auth/", mobile_auth_router)
 apiAuth = HttpJwtAuth()
 
+from django.http import HttpRequest
+
 @apiv1.post("/register/", response={201: UserOut, 400: dict})
-def register_user(request, payload: UserRegisterIn):
+def register_user(request: HttpRequest, payload: UserRegisterIn):
+    """
+    Registers a new user with the provided payload.
+
+    Args:
+        request (HttpRequest): The HTTP request object.
+        payload (UserRegisterIn): The user registration data.
+
+    Returns:
+        Tuple[int, UserOut|dict]: HTTP status code and user data or error message.
+    """
     try:
         user = User.objects.create_user(
             username=payload.username,

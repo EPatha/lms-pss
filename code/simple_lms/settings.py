@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'lms_core',  # Tambahkan ini
+    'lms_core',
 ]
 
 MIDDLEWARE = [

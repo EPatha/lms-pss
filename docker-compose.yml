@@ -1,19 +1,17 @@
+version: '3'
+
 services:
-  
   linux:
     container_name: base_linux
     image: ubuntu:24.04
   php:
     container_name: webserver-wp
     build:
-      context: .
-      dockerfile: Dockerfile-php
+      context: ./php_code
+    ports:
+      - "8080:80"
     volumes:
       - ./php_code:/var/www/html
-    ports:
-      - 8080:80
-    depends_on:
-      - mysql
   mysql:
     image: mysql:8.4
     container_name: mysql-wp

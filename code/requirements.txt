@@ -1,3 +1,4 @@
+django-ninja
 django==5.1.6 # frameworknya
 psycopg2-binary==2.9.10 # driver postgres
 pillow==11.1.0 # untuk mengolah gambar
